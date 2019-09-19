@@ -1,0 +1,9 @@
+<!--<div *ngFor="let result of results$ | async">-->
+<!--  <p>Name: {{result.name}}</p>-->
+<!--  <p>Type: {{result.name}}</p>-->
+<!--</div>-->
+
+<mat-card *ngFor="let result of results$ | async">
+  {{result.name}}
+  {{result.type}}
+</mat-card>

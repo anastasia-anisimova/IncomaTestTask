@@ -1,0 +1,24 @@
+<div class="filters">
+  <form [formGroup]="filtersGroup" (ngSubmit)="onFiltersSubmit()">
+
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput
+             formControlName="name"
+             placeholder="Name...">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Type</mat-label>
+      <input matInput
+             formControlName="type"
+             placeholder="Type...">
+    </mat-form-field>
+
+    <button mat-raised-button
+            class="apply-filters-btn"
+            color="primary">Применить
+    </button>
+  </form>
+
+</div>
