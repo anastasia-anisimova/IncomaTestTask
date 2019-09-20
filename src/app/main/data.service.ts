@@ -8,7 +8,7 @@ export interface ItemModel {
   type: string;
 }
 
-export interface ItemFilter {
+export interface ItemFilters {
   name: string;
   type: string;
 }
@@ -17,7 +17,7 @@ export interface ItemFilter {
 export class DataService {
 
   public data$: Observable<ItemModel[]>;
-  private filtersSubj: Subject<ItemFilter> = new BehaviorSubject<ItemFilter>(null);
+  private filtersSubj: Subject<ItemFilters> = new BehaviorSubject<ItemFilters>(null);
 
   public data: ItemModel[] = [
     {
@@ -80,5 +80,9 @@ export class DataService {
 
   getData() {
     return this.data$;
+  }
+
+  setFIlters(filters: ItemFilters) {
+    this.filtersSubj.next(filters);
   }
 }

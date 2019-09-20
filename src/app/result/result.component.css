@@ -1,0 +1,12 @@
+.mat-table {
+  margin: 20px auto;
+  width: 700px;
+}
+
+td {
+  padding: 0 10px !important;
+}
+
+div{
+  margin: 40px 30px;
+}
