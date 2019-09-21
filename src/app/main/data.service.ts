@@ -30,13 +30,11 @@ export class DataService {
         id: 1,
         name: 'apple',
         type: 'fruit'
-      },
-      {
+      }, {
         id: 2,
         name: 'banana',
         type: 'fruit'
-      },
-      {
+      }, {
         id: 3,
         name: 'apple',
         type: 'fruit'
@@ -45,18 +43,15 @@ export class DataService {
         id: 4,
         name: 'lemon',
         type: 'fruit'
-      },
-      {
+      }, {
         id: 5,
         name: 'grape',
         type: 'fruit'
-      },
-      {
+      }, {
         id: 6,
         name: 'tomato',
         type: 'vegetables'
-      },
-      {
+      }, {
         id: 7,
         name: 'cucumber',
         type: 'vegetables'
@@ -65,13 +60,11 @@ export class DataService {
         id: 8,
         name: 'cabbage',
         type: 'vegetables'
-      },
-      {
+      }, {
         id: 9,
         name: 'carrot',
         type: 'vegetables'
-      },
-      {
+      }, {
         id: 10,
         name: 'onion',
         type: 'vegetables'

@@ -12,21 +12,19 @@ export class FilterComponent implements OnInit {
 
   filtersGroup: FormGroup;
 
-  private currentFilters: ItemFilters;
-
-  constructor(private fb: FormBuilder, private router: Router, private dataService: DataService) {
+  constructor(private fb: FormBuilder,
+              private router: Router,
+              private dataService: DataService) {
   }
 
   ngOnInit() {
-    this.currentFilters = this.dataService.getFilters();
+    const currentFilters = this.dataService.getFilters();
 
     this.filtersGroup = this.fb.group({
-        name: this.currentFilters.name,
-        type: this.currentFilters.type,
+        name: currentFilters.name,
+        type: currentFilters.type,
       }
     );
-
-
   }
 
   onFiltersSubmit() {

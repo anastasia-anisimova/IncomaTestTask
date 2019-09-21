@@ -5,7 +5,7 @@ import {AppComponent} from './app.component';
 import {FilterComponent} from './filter/filter.component';
 import {ResultComponent} from './result/result.component';
 import {DataService} from './main/data.service';
-import {ActivatedRoute, RouterModule, Routes} from '@angular/router';
+import {RouterModule} from '@angular/router';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';

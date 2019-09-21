@@ -1,4 +1,6 @@
-<form class="main-container" [formGroup]="filtersGroup" (ngSubmit)="onFiltersSubmit()">
+<form class="main-container"
+      [formGroup]="filtersGroup"
+      (ngSubmit)="onFiltersSubmit()">
 
   <mat-form-field>
     <mat-label>Name</mat-label>
@@ -15,7 +17,6 @@
   </mat-form-field>
 
   <button mat-raised-button
-          class="apply-filters-btn"
           color="primary">Find
   </button>
 </form>

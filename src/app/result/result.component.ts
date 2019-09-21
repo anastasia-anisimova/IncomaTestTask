@@ -25,14 +25,20 @@ export class ResultComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.subscriptions.add(this.activatedRoute.queryParams.subscribe((val: ItemFilters) => this.service.setFilters(val)));
-    this.results$ = this.service.getData().pipe(shareReplay(1));
-    this.isEmpty$ = this.results$.pipe(map(result => result.length < 1));
-
     this.displayedColumns = ['id', 'name', 'type'];
+
+    this.subscriptions.add(this.activatedRoute.queryParams.subscribe(
+      (val: ItemFilters) => this.service.setFilters(val))
+    );
+    this.results$ = this.service.getData().pipe(
+      shareReplay(1),
+    );
+    this.isEmpty$ = this.results$.pipe(
+      map(result => result.length < 1),
+    );
   }
 
-  public openFilters() {
+  openFilters() {
     this.router.navigate(['']);
   }
 
