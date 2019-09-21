@@ -1,24 +1,21 @@
-<div class="filters">
-  <form [formGroup]="filtersGroup" (ngSubmit)="onFiltersSubmit()">
+<form class="main-container" [formGroup]="filtersGroup" (ngSubmit)="onFiltersSubmit()">
 
-    <mat-form-field>
-      <mat-label>Name</mat-label>
-      <input matInput
-             formControlName="name"
-             placeholder="Name...">
-    </mat-form-field>
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput
+           formControlName="name"
+           placeholder="Name...">
+  </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Type</mat-label>
-      <input matInput
-             formControlName="type"
-             placeholder="Type...">
-    </mat-form-field>
+  <mat-form-field>
+    <mat-label>Type</mat-label>
+    <input matInput
+           formControlName="type"
+           placeholder="Type...">
+  </mat-form-field>
 
-    <button mat-raised-button
-            class="apply-filters-btn"
-            color="primary">Искать
-    </button>
-  </form>
-
-</div>
+  <button mat-raised-button
+          class="apply-filters-btn"
+          color="primary">Искать
+  </button>
+</form>

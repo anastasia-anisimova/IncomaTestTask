@@ -1,9 +1,11 @@
-<button mat-raised-button
-        (click)="openFilters()"
-        color="primary">Filters...</button>
-<div  *ngIf="!(isEmpty$ | async); else empty">
+<div class="main-container">
+  <button mat-raised-button
+          (click)="openFilters()"
+          color="primary">Filters...
+  </button>
 
   <table mat-table
+         *ngIf="!(isEmpty$ | async); else empty"
          [dataSource]="results$ | async"
          class="mat-elevation-z8">
 

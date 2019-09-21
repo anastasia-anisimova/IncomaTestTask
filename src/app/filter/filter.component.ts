@@ -24,10 +24,13 @@ export class FilterComponent implements OnInit {
   }
 
   onFiltersSubmit() {
-    const queryParams: ItemFilters = {
-      name: this.filtersGroup.get('name').value,
-      type: this.filtersGroup.get('type').value,
-    };
+    const queryParams: ItemFilters = {};
+    if (this.filtersGroup.get('name').value) {
+      queryParams.name = this.filtersGroup.get('name').value;
+    }
+    if (this.filtersGroup.get('type').value) {
+      queryParams.type = this.filtersGroup.get('type').value;
+    }
     this.router.navigate(['/result'], { queryParams });
   }
 
