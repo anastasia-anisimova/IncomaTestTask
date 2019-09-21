@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {Observable} from 'rxjs';
-import {DataService, ItemModel} from '../main/data.service';
-import {ActivatedRoute} from '@angular/router';
-import {map, tap} from 'rxjs/operators';
+import {merge, Observable} from 'rxjs';
+import {DataService, ItemFilters, ItemModel} from '../main/data.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {map, shareReplay, tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-result',
@@ -13,21 +13,24 @@ import {map, tap} from 'rxjs/operators';
 export class ResultComponent implements OnInit {
 
   public results$: Observable<ItemModel[]>;
+  public isEmpty$: Observable<boolean>;
   displayedColumns: string[];
 
   constructor(private service: DataService,
-              private route: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private router: Router) {
   }
 
   ngOnInit() {
-    this.route.params.pipe(
-      tap(params => console.log(params)),
-      // map(val => ({name: val.name, type: val.type})),
-      // map(val => this.service.setFIlters(val)),
-    ).subscribe();
+    this.activatedRoute.queryParams.subscribe((val: ItemFilters) => this.service.setFilters(val));
+    this.results$ = this.service.getData().pipe(shareReplay(1));
+    this.isEmpty$ = this.results$.pipe(map(result => result.length < 1));
 
     this.displayedColumns = ['id', 'name', 'type'];
-    this.results$ = this.service.getData();
+  }
+
+  public openFilters() {
+    this.router.navigate(['']);
   }
 
 }

@@ -5,17 +5,17 @@ import {ResultComponent} from './result/result.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'result',
     component: ResultComponent,
     pathMatch: 'full',
   }, {
-    path: 'filters',
+    path: '',
     component: FilterComponent,
     pathMatch: 'full',
   },
   {
     path: '**',
-    component: ResultComponent,
+    component: FilterComponent,
     pathMatch: 'full'
   },
 ];

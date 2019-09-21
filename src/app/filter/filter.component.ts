@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Route, Router} from '@angular/router';
+import {ItemFilters} from '../main/data.service';
 
 @Component({
   selector: 'app-filter',
@@ -23,11 +24,11 @@ export class FilterComponent implements OnInit {
   }
 
   onFiltersSubmit() {
-    this.router.navigate(['', {
+    const queryParams: ItemFilters = {
       name: this.filtersGroup.get('name').value,
       type: this.filtersGroup.get('type').value,
-    }]);
-    console.log(this.filtersGroup.controls);
+    };
+    this.router.navigate(['/result'], { queryParams });
   }
 
 }

@@ -16,10 +16,10 @@ export interface ItemFilters {
 @Injectable()
 export class DataService {
 
-  public data$: Observable<ItemModel[]>;
+  private readonly data$: Observable<ItemModel[]>;
   private filtersSubj: Subject<ItemFilters> = new BehaviorSubject<ItemFilters>(null);
 
-  public data: ItemModel[] = [
+  private data: ItemModel[] = [
     {
       id: 1,
       name: 'apple',
@@ -74,15 +74,20 @@ export class DataService {
 
   constructor() {
     this.data$ = this.filtersSubj.pipe(
-      map(filters => this.data),
+      map((filters: ItemFilters) => this.filterData(filters)),
     );
+  }
+
+  private filterData(filters: ItemFilters) {
+    return this.data.filter(val => val.name.toLowerCase().indexOf(filters.name.toLowerCase()) > -1
+      && val.type.toLowerCase().indexOf(filters.type.toLowerCase()) > -1);
   }
 
   getData() {
     return this.data$;
   }
 
-  setFIlters(filters: ItemFilters) {
+  setFilters(filters: ItemFilters) {
     this.filtersSubj.next(filters);
   }
 }

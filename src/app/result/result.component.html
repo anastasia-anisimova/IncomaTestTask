@@ -1,6 +1,11 @@
-<div>
+<button mat-raised-button
+        (click)="openFilters()"
+        color="primary">Filters...</button>
+<div  *ngIf="!(isEmpty$ | async); else empty">
 
-  <table mat-table [dataSource]="results$ | async" class="mat-elevation-z8">
+  <table mat-table
+         [dataSource]="results$ | async"
+         class="mat-elevation-z8">
 
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> Id</th>
@@ -21,3 +26,5 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 </div>
+
+<ng-template #empty>No result</ng-template>
