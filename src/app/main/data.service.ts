@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, combineLatest, Observable, Subject} from 'rxjs';
+import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 export interface ItemModel {
@@ -17,7 +17,7 @@ export interface ItemFilters {
 export class DataService {
 
   private readonly data$: Observable<ItemModel[]>;
-  private filtersSubj: Subject<ItemFilters> = new BehaviorSubject<ItemFilters>(null);
+  private filtersSubj: BehaviorSubject<ItemFilters> = new BehaviorSubject({});
   private dataSubject: BehaviorSubject<ItemModel[]>;
 
   private static findEntry(value: string, findValue: string): boolean {
@@ -93,5 +93,9 @@ export class DataService {
 
   setFilters(filters: ItemFilters) {
     this.filtersSubj.next(filters);
+  }
+
+  getFilters() {
+    return this.filtersSubj.getValue();
   }
 }

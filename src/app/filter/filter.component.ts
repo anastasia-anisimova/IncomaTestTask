@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {Route, Router} from '@angular/router';
-import {ItemFilters} from '../main/data.service';
+import {Router} from '@angular/router';
+import {DataService, ItemFilters} from '../main/data.service';
 
 @Component({
   selector: 'app-filter',
@@ -12,15 +12,21 @@ export class FilterComponent implements OnInit {
 
   filtersGroup: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  private currentFilters: ItemFilters;
+
+  constructor(private fb: FormBuilder, private router: Router, private dataService: DataService) {
   }
 
   ngOnInit() {
+    this.currentFilters = this.dataService.getFilters();
+
     this.filtersGroup = this.fb.group({
-        name: '',
-        type: '',
+        name: this.currentFilters.name,
+        type: this.currentFilters.type,
       }
     );
+
+
   }
 
   onFiltersSubmit() {
@@ -31,7 +37,7 @@ export class FilterComponent implements OnInit {
     if (this.filtersGroup.get('type').value) {
       queryParams.type = this.filtersGroup.get('type').value;
     }
-    this.router.navigate(['/result'], { queryParams });
+    this.router.navigate(['/result'], {queryParams});
   }
 
 }
